@@ -1,0 +1,77 @@
+# See https://help.github.com/articles/ignoring-files for more about ignoring files.
+
+# Ignore bundler config.
+/.bundle
+
+# Ignore all logfiles and tempfiles.
+/log/*
+/tmp/*
+!/log/.keep
+!/tmp/.keep
+
+# Ignore pidfiles, but keep the directory.
+/tmp/pids/*
+!/tmp/pids/
+!/tmp/pids/.keep
+
+# Ignore uploaded files in storage.
+/storage/*
+!/storage/.keep
+/tmp/storage/*
+!/tmp/storage/
+!/tmp/storage/.keep
+
+# Ignore master key for decrypting credentials and more.
+/config/master.key
+/config/credentials/*.key
+
+# Ignore database configuration with credentials
+/config/database.yml
+
+# Ignore test coverage report
+/coverage
+
+# Ignore rspec status
+.rspec_status
+
+# SimpleCov
+/coverage/
+
+# Byebug
+.byebug_history
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# Node modules
+/node_modules
+/app/build/vendor
+
+# Rails
+/public/assets
+/public/packs
+/public/packs-test
+
+# Turbo
+/app/assets/builds/*.js
+/app/assets/builds/*.js.map
+
+# Sprockets
+/app/assets/config/manifest.js
+
+# IDEs
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Screenshots (optional - comment out if you want to track them)
+# app/assets/images/screenshots/*.png
+# app/assets/images/screenshots/*.jpg

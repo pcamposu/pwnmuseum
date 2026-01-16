@@ -1,0 +1,70 @@
+<div class="min-h-screen bg-gradient-to-br from-gray-950 via-gray-900 to-gray-950 text-gray-100">
+  <header class="bg-gray-900/95 backdrop-blur-sm border-b-2 border-gray-700 shadow-xl">
+    <div class="container mx-auto px-4 sm:px-6 py-8 sm:py-12">
+      <h1 class="text-4xl sm:text-5xl md:text-6xl font-mono font-bold text-red-500 mb-2 sm:mb-3 drop-shadow-lg">
+        PWN<span class="text-white">Museum</span>
+      </h1>
+      <p class="text-lg sm:text-xl md:text-2xl text-gray-300 font-mono flex items-center gap-2">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 sm:w-6 sm:h-6 text-red-400 flex-shrink-0">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 5.25a3 3 0 013 3m3 0a6 6 0 01-7.029 5.912c-.563-.097-1.159.026-1.563.43L10.5 17.25H8.25v2.25H6v2.25H2.25v-2.818c0-.597.237-1.17.659-1.591l6.499-6.499c.404-.404.527-1 .43-1.563A6 6 0 1121.75 8.25z" />
+        </svg>
+        <span class="truncate">Preserving the art of privilege escalation</span>
+      </p>
+    </div>
+  </header>
+
+  <main class="container mx-auto px-4 sm:px-6 py-8 sm:py-12 md:py-16">
+    <div class="flex flex-col sm:flex-row sm:items-center justify-between mb-6 sm:mb-8 md:mb-10 gap-4">
+      <h2 class="text-2xl sm:text-3xl md:text-4xl font-mono font-bold text-white">Hall of Fame</h2>
+      <div class="flex flex-col sm:flex-row gap-3">
+        <%= link_to hackers_path,
+            class: "bg-gray-800 hover:bg-gray-700 text-white px-4 sm:px-6 py-2 sm:py-3 rounded-lg font-mono font-bold border-2 border-gray-600 transition-all duration-200 hover:scale-105 text-sm sm:text-base flex items-center justify-center gap-2" do %>
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-4 h-4 sm:w-5 sm:h-5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" />
+          </svg>
+          <span>View Hackers</span>
+        <% end %>
+        <%= link_to new_platform_path,
+            class: "bg-red-600 hover:bg-red-500 text-white px-4 sm:px-6 py-2 sm:py-3 rounded-lg font-mono font-bold border-2 border-red-400 transition-all duration-200 hover:scale-105 text-sm sm:text-base flex items-center justify-center gap-2" do %>
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-4 h-4 sm:w-5 sm:h-5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+          </svg>
+          <span>New Platform</span>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8">
+      <% @platforms.each do |platform| %>
+        <%= link_to platform_path(slug: platform.slug),
+            class: "group block bg-gray-900/80 backdrop-blur-sm border-2 border-gray-700 rounded-xl p-4 sm:p-6 md:p-8 hover:border-red-500 hover:shadow-2xl hover:shadow-red-900/40 transition-all duration-300 hover:-translate-y-1" do %>
+
+          <div class="flex items-start justify-between mb-4 sm:mb-6 gap-2">
+            <h3 class="text-xl sm:text-2xl md:text-3xl font-mono font-bold text-white group-hover:text-red-400 transition-colors leading-tight">
+              <%= platform.name %>
+            </h3>
+            <span class="bg-gray-800 text-white text-xs sm:text-base px-2 sm:px-3 md:px-4 py-1 sm:py-2 rounded-full font-mono font-bold border-2 border-gray-600 flex-shrink-0">
+              <%= platform.exploits.count %> <%= platform.exploits.count == 1 ? 'exploit' : 'exploits' %>
+            </span>
+          </div>
+
+          <% if platform.manufacturer.present? %>
+            <p class="text-gray-400 font-mono text-xs sm:text-sm mb-3 sm:mb-4 flex items-center gap-2">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-3 h-3 sm:w-4 sm:h-4 flex-shrink-0">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 21h19.5m-18-18v18m10.5-18v18m6-13.5V21M6.75 6.75h.75m-.75 3h.75m-.75 3h.75m3-6h.75m-.75 3h.75m-.75 3h.75M6.75 21v-3.375c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21M3 3h12m-.75 4.5H21m-3.75 3.75h.008v.008h-.008v-.008zm0 3h.008v.008h-.008v-.008zm0 3h.008v.008h-.008v-.008z" />
+              </svg>
+              <span class="truncate"><%= platform.manufacturer %></span>
+            </p>
+          <% end %>
+
+          <div class="flex items-center text-red-400 font-mono font-bold text-sm sm:text-base group-hover:text-red-300 transition-colors">
+            <span class="truncate">View timeline</span>
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-4 h-4 sm:w-5 sm:h-5 ml-1 sm:ml-2 group-hover:translate-x-1 transition-transform flex-shrink-0">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+            </svg>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+  </main>
+</div>

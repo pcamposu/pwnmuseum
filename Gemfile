@@ -65,7 +65,7 @@ group :development, :test do
   gem "factory_bot_rails", "~> 6.2"
 
   # Shoulda Matchers for RSpec
-  gem "shoulda-matchers", "~> 6.0"
+  gem "shoulda-matchers", "~> 7.0"
 
   # Controller testing for Rails
   gem "rails-controller-testing", "~> 1.0"

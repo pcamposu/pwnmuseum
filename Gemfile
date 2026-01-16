@@ -44,7 +44,7 @@ gem "image_processing", "~> 1.2"
 
 group :development, :test do
   # Load environment variables from .env file
-  gem "dotenv-rails", "~> 2.8"
+  gem "dotenv-rails", "~> 3.2"
 
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[ mri windows ], require: "debug/prelude"
